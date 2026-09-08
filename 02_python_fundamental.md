@@ -84,3 +84,53 @@ status = ["Pass" for num in exam_marks if num >= 35]
 ***Summary***
 Dusra num (for ke baad wala): Wo ek variable hai jo ek-ek box utha kar laata hai.
 Pehla num (for ke pehle wala): Wo aadesh (command) hai ki us box ka kya karna hai (waise hi rakhna hai, usme kuch jodna hai, ya use badalna hai).
+
+
+
+
+# Sets in Python (The 4th Pillar)
+
+**Concept:**
+Set ek aisi tokri (collection) hai jisme **sirf unique (alag) items** aa sakte hain. Isme koi bhi item repeat (duplicate) nahi ho sakta. Data Science aur Data Analysis mein jab kisi bade data mein se sirf "Unique" values nikalni hon, tab Sets ka sabse zyada use hota hai.
+
+**Syntax (Pehchaan):**
+Sets ko hamesha **Curly Brackets `{}`** ke andar likha jata hai (lekin Dictionary ki tarah Key-Value nahi hote, sirf items hote hain).
+`my_set = {1, 2, 3, 4}`
+
+---
+
+### 📌 Sets ke 3 Sabse Bade Rules (Properties):
+1. **No Duplicates:** Isme ek value sirf ek baar hi aa sakti hai. Agar aap `{1, 2, 2, 3}` likhenge, toh Python usko automatically theek karke `{1, 2, 3}` kar dega.
+2. **Unordered:** Sets ka koi order nahi hota. Jab aap print karenge, toh items aage-peeche aa sakte hain. (Isi wajah se aap list ki tarah index `my_set[0]` nahi laga sakte).
+3. **Changeable (Modifiable):** Aap set mein naye item daal (add) sakte hain aur nikal (remove) sakte hain.
+
+---
+
+### 🛠️ Sabse Zyada Use Hone Wale Methods:
+
+**1. Common nikalna (Intersection):** *(Jo dono mein ho)*
+```python
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+print(set1.intersection(set2)) # Output: {3}
+
+
+**2. Sabko milana (Union): (Dono ko jodna, par bina duplicate ke)**
+set1 = {1, 2}
+set2 = {2, 3}
+print(set1.union(set2)) # Output: {1, 2, 3}
+
+**3. Check karna kuch common toh nahi (isdisjoint):**
+print(set1.isdisjoint(set2)) # Haan ya Naa (True/False) mein jawab dega
+
+**4. Naya item Add karna:**
+my_set = {1, 2}
+my_set.add(10)
+
+**5. Item Hatana (Remove):**
+my_set.remove(10)
+
+
+
+
+
