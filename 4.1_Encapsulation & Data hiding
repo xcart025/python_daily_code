@@ -1,0 +1,65 @@
+# 💊 OOP Pillar 1: Encapsulation & Data Hiding
+
+Object-Oriented Programming (OOP) ke 4 main pillars hote hain, jinme se pehla aur sabse zaroori hai **Encapsulation**[cite: 5]. 
+
+## 1. Encapsulation Kya Hai? (Definition)
+Encapsulation ka matlab hai Data (Attributes/Variables) aur Functions (Methods) ko ek single unit (Class) ke andar band (wrap) karna[cite: 5]. 
+* **Real-life Example:** Jaise ek dawai (medicine) ka capsule hota hai. Uske andar alag-alag chemicals (data) ek hi shell (class) mein pack hote hain.
+
+## 2. Data Hiding (Iska Fayda Kya Hai?)
+Iska sabse bada fayda **Data Hiding** hai. Agar humare paas koi sensitive data hai (jaise Bank Account ka Balance ya User ka Password), toh hum nahi chahte ki koi bhi bahar se aakar usey galti se change kar de. Encapsulation humein us data ko chupaane (hide karne) ki taqat deta hai[cite: 5].
+
+## 3. Security Levels (Access Modifiers in Python)
+Python mein data ko chupane ke 3 levels hote hain[cite: 5]:
+
+1. **Public Data (`self.name`):** 
+   * Yeh by default hota hai. Isey class ke andar aur bahar kahin se bhi access aur change kiya ja sakta hai[cite: 5].
+2. **Protected Data (`self._balance`):** 
+   * Variable ke naam se pehle ek underscore (`_`) lagaya jata hai. 
+   * **Rule:** Yeh ek convention (aapsi samjhauta) hai ki isey sirf Class aur uski aage aane wali Sub-classes (Inheritance) mein hi use karein, bahar nahi. Python isey force nahi karta[cite: 5].
+3. **Private Data (`self.__balance`):** 
+   * Variable ke naam se pehle double underscore (`__`) lagaya jata hai. 
+   * **Strict Rule:** Yeh data strictly lock ho jata hai. Isey class ke bahar access nahi kiya ja sakta (Agar karenge toh Error aayega)[cite: 5].
+
+## 4. Getters aur Setters (Safe Darwaze)
+Kyunki Private data ko hum bahar se direct nahi dekh sakte ya badal sakte, isliye hum Class ke andar hi do safe functions banate hain[cite: 5]:
+* **Getter:** Data ko sirf "read" (dekhne) ke liye.
+* **Setter:** Data ko safety ke sath "update" (change) karne ke liye.
+
+---
+
+### 💻 Encapsulation Ka Industry Example (Bank Account)
+
+```python
+class BankAccount:
+    def __init__(self, name, balance):
+        self.name = name                 # Public Data (Koi bhi dekh sakta hai)
+        self.__balance = balance         # Private Data (Sirf class ke andar accessible hai)
+
+    # GETTER (Private balance dekhne ka safe tarika)
+    def get_balance(self):
+        return self.__balance
+
+    # SETTER (Private balance update karne ka safe tarika)
+    def set_balance(self, new_balance):
+        # Yahan hum check laga sakte hain (e.g. balance negative nahi ho sakta)
+        if new_balance >= 0:
+            self.__balance = new_balance
+        else:
+            print("Invalid Amount!")
+
+# Object banana
+acc1 = BankAccount("Mohammad", 100000)
+
+# Public data ko direct print kar sakte hain
+print(acc1.name)  
+
+# Private data direct access karne par ERROR aayega:
+# print(acc1.__balance)  -> ❌ AttributeError
+
+# Private data ko GETTER ke zariye access karna (Sahi Tarika):
+print(f"Your Balance is: {acc1.get_balance()}")  # Output: 100000
+
+# Private data ko SETTER ke zariye change karna (Sahi Tarika):
+acc1.set_balance(200000)
+print(f"Updated Balance is: {acc1.get_balance()}")  # Output: 200000
