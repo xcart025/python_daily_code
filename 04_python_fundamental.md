@@ -23,30 +23,11 @@ class Car:
 # 2. Object Banana (Asli gaadi tayar karna)
 car1 = Car()  
 car2 = Car()  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 3. Dot (.) Operator (Object ke data ko access karna)
 print(car1.brand)  # Output: Toyota
+
+
+
+
+
+
